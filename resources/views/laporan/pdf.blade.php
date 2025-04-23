@@ -9,18 +9,25 @@
             margin-bottom: 20px;
             position: relative;
         }
-        .kop img {
+        .logo {
             position: absolute;
             left: 0;
             top: 0;
             width: 80px;
         }
+        .kop-content {
+            margin: 0 auto;
+        }
         .kop h3, .kop p {
             margin: 0;
+            padding: 2px 0;
         }
-        hr {
-            border: 1px solid #000;
+        .garis-horizontal {
+            border: none;
+            border-top: 1px solid #000;
+            height: 1px;
             margin-top: 10px;
+            width: 100%;
         }
         table {
             width: 100%;
@@ -40,11 +47,15 @@
 </head>
 <body>
     <div class="kop">
-        <h3 > <img src="{{ public_path('logo.png') }}" alt="Logo">UNIVERSITAS SULTAN AGENG TIRTAYASA</h3>
-        <p>FAKULTAS TEKNIK</p>
-        <p>Jl. Jenderal Sudirman Km 3, Kotabumi, Kec. Purwakarta, Kota Cilegon, Banten 42435</p>
-        <hr>
+        <img class="logo" src="{{ public_path('logo.png') }}" alt="Logo">
+        <div class="kop-content">
+            <h3>UNIVERSITAS SULTAN AGENG TIRTAYASA</h3>
+            <p>FAKULTAS TEKNIK</p>
+            <p>Jl. Jenderal Sudirman Km 3, Kotabumi, Kec. Purwakarta, Kota Cilegon, Banten 42435</p>
+        </div>
     </div>
+    
+    <hr class="garis-horizontal">
 
     <h3 style="text-align: center; margin-top: 30px;">Laporan Peminjaman Ruangan</h3>
 
