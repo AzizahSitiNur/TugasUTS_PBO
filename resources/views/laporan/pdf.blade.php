@@ -3,13 +3,50 @@
 <head>
     <title>Laporan Peminjaman</title>
     <style>
-        body { font-family: sans-serif; font-size: 12px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #000; padding: 6px; }
+        body { font-family: sans-serif; font-size: 12px; margin: 20px; }
+        .kop {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .kop img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 80px;
+        }
+        .kop h3, .kop p {
+            margin: 0;
+        }
+        hr {
+            border: 1px solid #000;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 6px;
+            text-align: left;
+        }
+        .ttd {
+            text-align: right;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
-    <h2>Laporan Peminjaman Ruangan</h2>
+    <div class="kop">
+        <h3 > <img src="{{ public_path('logo.png') }}" alt="Logo">UNIVERSITAS SULTAN AGENG TIRTAYASA</h3>
+        <p>FAKULTAS TEKNIK</p>
+        <p>Jl. Jenderal Sudirman Km 3, Kotabumi, Kec. Purwakarta, Kota Cilegon, Banten 42435</p>
+        <hr>
+    </div>
+
+    <h3 style="text-align: center; margin-top: 30px;">Laporan Peminjaman Ruangan</h3>
 
     <table>
         <thead>
@@ -35,5 +72,13 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="ttd">
+        <p>Mengetahui,</p>
+        <p>Wakil Dekan Fakultas Teknik</p>
+        <br><br><br>
+        <p><strong>Dr. Ir. Contoh Nama, M.T.</strong></p>
+        <p>NIP: 1234567890123456</p>
+    </div>
 </body>
 </html>
