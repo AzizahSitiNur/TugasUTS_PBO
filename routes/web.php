@@ -7,9 +7,14 @@ use App\Http\Controllers\Admin\RoomController as AdminRoomController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\BookingController as UserBookingController;
+use App\Http\Controllers\LaporanController as LaporanController;
+
 
 // Halaman utama
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', function () {
+    return view('welcome'); // atau view lain yang ada
+})->name('dashboard');
 
 // Rute untuk admin
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
@@ -27,15 +32,25 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         Route::patch('/{booking}/approve', [AdminBookingController::class, 'approve'])->name('approve');
         Route::patch('/{booking}/reject', [AdminBookingController::class, 'reject'])->name('reject');
     });
+    Route::prefix('laporan')->name('laporan.')->group(function () {
+        Route::get('/', [LaporanController::class, 'index'])->name('index');
+        Route::get('/export', [LaporanController::class, 'exportPdf'])->name('export');
+    });
+    
 });
 
 // Rute untuk user
 Route::prefix('user')->middleware(['auth', 'user'])->name('user.')->group(function () {
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/user/calendar/events', [UserBookingController::class, 'calendarEvents'])->name('calendar.events');
 
     // Peminjaman
     Route::resource('bookings', UserBookingController::class)->except(['edit', 'update']);
     Route::patch('bookings/{booking}/cancel', [UserBookingController::class, 'cancel'])->name('bookings.cancel');
 });
+Route::get('/profile/edit', function () {
+    return 'Edit Profile Page'; // atau bisa arahkan ke view tertentu
+})->middleware('auth')->name('profile.edit');
+
 
 require __DIR__.'/auth.php';

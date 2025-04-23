@@ -150,4 +150,81 @@
             </div>
         </div>
     </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5>Kalender Peminjaman Ruangan</h5>
+                </div>
+                <div class="card-body">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 @endsection
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const calendarEl = document.getElementById('calendar');
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            timeZone: 'local',
+            initialView: 'dayGridMonth',
+            height: 500,
+            events: '{{ route('user.calendar.events') }}', // ✅ yang benar, cukup di sini aja
+
+            eventClick: function(info) {
+                const eventDetails = `
+                    <strong>Ruangan:</strong> ${info.event.extendedProps.room_name}<br>
+                    <strong>Tujuan:</strong> ${info.event.extendedProps.description}<br>
+                    <strong>Waktu:</strong> ${info.event.start.toLocaleString()} - ${info.event.end.toLocaleString()}
+                `;
+                alert(eventDetails);
+            },
+
+            dateClick: function(info) {
+                const selectedDate = info.dateStr;
+                const eventsOnDate = calendar.getEvents().filter(event => {
+                    return event.start.toISOString().split('T')[0] === selectedDate;
+                });
+
+                if (eventsOnDate.length > 0) {
+                    let eventDetails = '<ul>';
+                    eventsOnDate.forEach(event => {
+                        eventDetails += `
+                            <li>
+                                <strong>Ruangan:</strong> ${event.extendedProps.room_name}<br>
+                                <strong>Tujuan:</strong> ${event.extendedProps.description}<br>
+                                <strong>Waktu:</strong> ${event.start.toLocaleString()} - ${event.end.toLocaleString()}
+                            </li>
+                        `;
+                    });
+                    eventDetails += '</ul>';
+                    alert(`Peminjaman pada tanggal ${selectedDate}:<br>${eventDetails}`);
+                } else {
+                    alert('Tidak ada peminjaman pada tanggal ini.');
+                }
+            },
+
+            eventTimeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            },
+
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+            },
+        });
+
+        calendar.render();
+    });
+</script>
+@endpush
+
+

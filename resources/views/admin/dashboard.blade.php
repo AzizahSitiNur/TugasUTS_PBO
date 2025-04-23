@@ -43,5 +43,8 @@
     <div class="mt-5">
         <h3>Peminjaman yang Menunggu Persetujuan</h3>
         <a href="{{ route('admin.bookings.index') }}" class="btn btn-primary">Lihat Semua</a>
+        <a href="{{ route('admin.laporan.index') }}" class="btn btn-secondary">Lihat Laporan Peminjaman</a>
     </div>
+
+    
 @endsection

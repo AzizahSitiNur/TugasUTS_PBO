@@ -79,4 +79,27 @@ class BookingController extends Controller
         $booking->delete();
         return redirect()->route('user.bookings.index')->with('success', 'Permintaan peminjaman ruangan berhasil dibatalkan.');
     }
+    public function calendarEvents()
+{
+    // Ambil semua booking yang sudah disetujui
+    $bookings = Booking::where('status', 'approved')
+        ->with('room') // Sertakan informasi ruangan
+        ->get();
+
+    // Format data event untuk kalender
+    $events = $bookings->map(function ($booking) {
+        return [
+            'title' => $booking->room->name . ' - ' . $booking->purpose,
+            'start' => $booking->start_time->toIso8601String(), // Format ISO 8601
+            'end' => $booking->end_time->toIso8601String(), // Format ISO 8601
+            'description' => $booking->purpose,
+            'room_id' => $booking->room->id,
+            'room_name' => $booking->room->name,
+            'status' => $booking->status,
+        ];
+    });
+
+    return response()->json($events);  // Kembalikan dalam format JSON
+}
+
 }

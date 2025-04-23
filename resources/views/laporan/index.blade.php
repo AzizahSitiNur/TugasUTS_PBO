@@ -1,15 +1,17 @@
-<x-app-layout>
+@extends('layouts.admin')
+
+@section('content')
     <div class="container">
         <h2>Laporan Peminjaman Ruangan</h2>
 
-        <form method="GET" action="{{ route('laporan.index') }}" class="mb-4">
+        <form method="GET" action="{{ route('admin.laporan.index') }}" class="mb-4">
             <div>
                 <label>Start Date:</label>
                 <input type="date" name="start_date" value="{{ request('start_date') }}">
                 <label>End Date:</label>
                 <input type="date" name="end_date" value="{{ request('end_date') }}">
                 <button type="submit">Filter</button>
-                <a href="{{ route('laporan.export', request()->only(['start_date', 'end_date'])) }}">Export PDF</a>
+                <a href="{{ route('admin.laporan.export', request()->only(['start_date', 'end_date'])) }}">Export PDF</a>
             </div>
         </form>
 
@@ -42,4 +44,4 @@
             </tbody>
         </table>
     </div>
-</x-app-layout>
+@endsection
