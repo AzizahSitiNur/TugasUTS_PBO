@@ -5,15 +5,17 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\RoomController as AdminRoomController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\BookingController as UserBookingController;
 use App\Http\Controllers\LaporanController as LaporanController;
 
 
+
 // Halaman utama
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', function () {
-    return view('welcome'); // atau view lain yang ada
+    return view('welcome'); 
 })->name('dashboard');
 
 // Rute untuk admin
@@ -32,6 +34,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         Route::patch('/{booking}/approve', [AdminBookingController::class, 'approve'])->name('approve');
         Route::patch('/{booking}/reject', [AdminBookingController::class, 'reject'])->name('reject');
     });
+    // Manajemen User
+    Route::resource('users', AdminUserController::class)->except(['show']);
+    Route::get('users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+    Route::patch('users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+    Route::delete('users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+    
+    // laporan
     Route::prefix('laporan')->name('laporan.')->group(function () {
         Route::get('/', [LaporanController::class, 'index'])->name('index');
         Route::get('/export', [LaporanController::class, 'exportPdf'])->name('export');

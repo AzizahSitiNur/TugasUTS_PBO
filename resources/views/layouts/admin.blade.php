@@ -20,6 +20,8 @@
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.users.index') }}">User</a>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.rooms.index') }}">Ruangan</a>
                     </li>
                     <li class="nav-item">
