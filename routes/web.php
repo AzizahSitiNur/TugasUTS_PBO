@@ -13,10 +13,10 @@ use App\Http\Controllers\LaporanController as LaporanController;
 
 
 // Halaman utama
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', function () {
-    return view('welcome'); 
-})->name('dashboard');
+Route::get('/', function () {
+    return auth()->check() ? redirect()->route('dashboard') : redirect()->route('login');
+});
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Rute untuk admin
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
