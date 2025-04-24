@@ -52,8 +52,15 @@ class UserController extends Controller
             'email' => $request->email,
             'role' => $request->role,
             'is_active' => $request->is_active ?? true,
+            
         ]);
 
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
+        }
+        if (isset($data)) {
+            $user->update($data);
+        }
         return redirect()->route('admin.users.index')->with('success', 'User berhasil diupdate.');
     }
 
