@@ -66,4 +66,8 @@
             </div>
         </div>
     </div>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary" style="margin-top: 7px;">Kembali</a>
+    </div>
+
 @endsection

@@ -174,7 +174,7 @@
             timeZone: 'local',
             initialView: 'dayGridMonth',
             height: 500,
-            events: '{{ route('user.calendar.events') }}', // ✅ yang benar, cukup di sini aja
+            events: '{{ route('user.calendar.events') }}', 
 
             eventClick: function(info) {
                 const eventDetails = `
