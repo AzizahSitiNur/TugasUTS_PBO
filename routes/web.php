@@ -54,7 +54,7 @@ Route::prefix('user')->middleware(['auth', 'user'])->name('user.')->group(functi
 
     // Peminjaman
     Route::resource('bookings', UserBookingController::class)->except(['edit', 'update']);
-    Route::patch('bookings/{booking}/cancel', [UserBookingController::class, 'cancel'])->name('bookings.cancel');
+    Route::delete('bookings/{booking}/cancel', [UserBookingController::class, 'cancel'])->name('bookings.cancel');
 });
 Route::get('/profile/edit', function () {
     return 'Edit Profile Page'; // atau bisa arahkan ke view tertentu
