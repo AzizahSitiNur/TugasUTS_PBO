@@ -138,13 +138,6 @@
                                         <i class="fas fa-eye"></i> Detail
                                     </a>
 
-                                    <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus peminjaman ini?')">
-                                            <i class="fas fa-trash"></i> Hapus
-                                        </button>
-                                    </form>
                                 </div>
                             </td>
                         </tr>
