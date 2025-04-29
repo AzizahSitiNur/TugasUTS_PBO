@@ -8,20 +8,19 @@
         <h1>Detail Peminjaman</h1>
         <a href="{{ route('user.bookings.index') }}" class="btn btn-secondary">Kembali</a>
     </div>
-    
+
     <div class="card">
-        <div class="card-header 
-            @if($booking->status == 'pending')
-                bg-warning text-dark
+        <div
+            class="card-header 
+            @if ($booking->status == 'pending') bg-warning text-dark
             @elseif($booking->status == 'approved')
                 bg-success text-white
             @else
-                bg-danger text-white
-            @endif">
+                bg-danger text-white @endif">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">
-                    Status: 
-                    @if($booking->status == 'pending')
+                    Status:
+                    @if ($booking->status == 'pending')
                         Menunggu Persetujuan
                     @elseif($booking->status == 'approved')
                         Disetujui
@@ -77,7 +76,7 @@
                     </table>
                 </div>
             </div>
-            
+
             <div class="mt-4">
                 <h5>Tujuan Peminjaman</h5>
                 <div class="card">
@@ -86,8 +85,8 @@
                     </div>
                 </div>
             </div>
-            
-            @if($booking->admin_notes)
+
+            @if ($booking->admin_notes)
                 <div class="mt-4">
                     <h5>Catatan Admin</h5>
                     <div class="card">
@@ -97,17 +96,21 @@
                     </div>
                 </div>
             @endif
-            
+
             <div class="mt-4">
-                @if($booking->status == 'pending')
+                @if ($booking->status == 'pending')
                     <div class="alert alert-warning">
-                        <i class="bi bi-exclamation-triangle"></i> Permintaan peminjaman Anda sedang menunggu persetujuan admin.
+                        <i class="bi bi-exclamation-triangle"></i> Permintaan peminjaman Anda sedang menunggu persetujuan
+                        admin.
                     </div>
-                    
+
                     <form action="{{ route('user.bookings.cancel', $booking) }}" method="POST" class="d-inline">
                         @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin membatalkan peminjaman ini?')">Batalkan Peminjaman</button>
+                        @method('PATCH') 
+                        <button type="submit" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Apakah Anda yakin ingin membatalkan peminjaman ini?')">
+                            Batalkan
+                        </button>
                     </form>
                 @elseif($booking->status == 'approved')
                     <div class="alert alert-success">

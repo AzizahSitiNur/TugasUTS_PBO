@@ -8,47 +8,53 @@
     <p class="text-muted">Selamat datang, {{ Auth::user()->name }}!</p>
 
     <div class="row mt-4">
+        
         <div class="col-md-4">
-            <div class="card bg-warning text-dark mb-4">
-                <div class="card-header">
-                    <h5>Peminjaman Tertunda</h5>
+            <div class="card bg-warning text-dark mb-4 rounded-4 shadow-sm border-0">
+                <a href="{{route('user.bookings.index')}}">
+                <div class="card-body d-flex align-items-center gap-4">
+                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 64px; height: 64px;">
+                        <i class="fas fa-clock text-warning fa-3x"></i>
+                    </div>
+                    <div class="d-flex flex-column align-items-start ">
+                        <h3 class="fw-bold mb-1">{{ $pendingBookings ? $pendingBookings->count() : 0 }}</h3>
+                        <p class="text-dark">Menunggu Persetujuan</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h3>{{ $pendingBookings ? $pendingBookings->count() : 0 }}</h3>
-                    <p>Menunggu persetujuan admin</p>
+                </a>
+            </div>
+        </div>
+        
+
+        <div class="col-md-4">
+            <div class="card bg-success text-dark mb-4 rounded-4 shadow-sm border-0">
+                <a href="{{route('user.bookings.index')}}">
+                <div class="card-body d-flex align-items-center gap-4">
+                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 64px; height: 64px;">
+                        <i class="fas fa-check-circle text-success fa-3x"></i>
+                    </div>
+                    <div class="d-flex flex-column align-items-start text-white">
+                        <h3>{{ $upcomingBookings ? $upcomingBookings->count() : 0 }}</h3>
+                        <p>Sudah disetujui</p>
+                    </div>
                 </div>
-                <div class="card-footer text-center">
-                    <a href="{{ route('user.bookings.index') }}" class="btn btn-sm btn-light">Lihat Semua</a>
-                </div>
+                </a>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card bg-success text-white mb-4">
-                <div class="card-header">
-                    <h5>Peminjaman Akan Datang</h5>
+            <div class="card bg-primary text-dark mb-4 rounded-4 shadow-sm border-0">
+                <a href="{{ route('user.bookings.create') }}">
+                <div class="card-body d-flex align-items-center gap-4">
+                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 64px; height: 64px;">
+                        <i class="fas fa-plus-circle text-primary fa-3x"></i>
+                    </div>
+                    <div class="d-flex flex-column align-items-start">
+                        <h3 class="text-white">+</h3>
+                        <p class="text-white">Buat Peminjaman</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h3>{{ $upcomingBookings ? $upcomingBookings->count() : 0 }}</h3>
-                    <p>Sudah disetujui</p>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="{{ route('user.bookings.index') }}" class="btn btn-sm btn-light">Lihat Semua</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card bg-primary text-white mb-4">
-                <div class="card-header">
-                    <h5>Buat Peminjaman Baru</h5>
-                </div>
-                <div class="card-body">
-                    <p>Pinjam ruangan untuk kegiatan Anda</p>
-                </div>
-                <div class="card-footer">
-                    <a href="{{ route('user.bookings.create') }}" class="btn btn-sm btn-light">Buat Peminjaman</a>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -73,7 +79,7 @@
                                     </div>
                                     <p class="mb-1">{{ $booking->start_time->format('d/m/Y H:i') }} -
                                         {{ $booking->end_time->format('d/m/Y H:i') }}</p>
-                                    <small class="text-muted">{{ Str::limit($booking->purpose, 50) }}</small>
+                                
                                 </a>
                             @endforeach
                         </div>
@@ -101,7 +107,7 @@
                                     </div>
                                     <p class="mb-1">{{ $booking->start_time->format('d/m/Y H:i') }} -
                                         {{ $booking->end_time->format('d/m/Y H:i') }}</p>
-                                    <small class="text-muted">{{ Str::limit($booking->purpose, 50) }}</small>
+                                   
                                 </a>
                             @endforeach
                         </div>
@@ -122,19 +128,19 @@
                         <p class="text-muted">Tidak ada riwayat peminjaman.</p>
                     @else
                         <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Ruangan</th>
+                            <table class="table table-bordered table-hover">
+                                <thead class="table-dark">
+                                    <tr class="text-center">
+                                        <th>Ruang</th>
                                         <th>Waktu</th>
                                         <th>Status</th>
-                                        <th>Catatan Admin</th>
+                        
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="text-center">
                                     @foreach ($pastBookings as $booking)
                                         <tr>
-                                            <td>{{ $booking->room->name }}</td>
+                                            <td >{{ $booking->room->name }}</td>
                                             <td>{{ $booking->start_time->format('d/m/Y H:i') }} -
                                                 {{ $booking->end_time->format('d/m/Y H:i') }}</td>
                                             <td>
@@ -144,7 +150,7 @@
                                                     <span class="badge bg-danger">Ditolak</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $booking->admin_notes ?? '-' }}</td>
+                                      
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -185,7 +191,7 @@
                     </div>
 
                 
-                    <!-- Action buttons (if applicable) -->
+                    
                     <div id="actionButtons" class="text-end">
                         <button type="button" class="btn btn-success" id="approveButton">Setujui</button>
                         <button type="button" class="btn btn-danger" id="rejectButton">Tolak</button>
@@ -236,29 +242,7 @@
                     eventModal.show();
                 },
 
-                dateClick: function(info) {
-                    const selectedDate = info.dateStr;
-                    const eventsOnDate = calendar.getEvents().filter(event => {
-                        return event.start.toISOString().split('T')[0] === selectedDate;
-                    });
-
-                    if (eventsOnDate.length > 0) {
-                        let eventDetails = '<ul>';
-                        eventsOnDate.forEach(event => {
-                            eventDetails += `
-                        <li>
-                            <strong>Ruangan:</strong> ${event.extendedProps.room_name}<br>
-                            <strong>Tujuan:</strong> ${event.extendedProps.description}<br>
-                            <strong>Waktu:</strong> ${event.start.toLocaleString()} - ${event.end.toLocaleString()}
-                        </li>
-                    `;
-                        });
-                        eventDetails += '</ul>';
-                        alert(`Peminjaman pada tanggal ${selectedDate}:<br>${eventDetails}`);
-                    } else {
-                        alert('Tidak ada peminjaman pada tanggal ini.');
-                    }
-                },
+                
 
                 eventTimeFormat: {
                     hour: '2-digit',
