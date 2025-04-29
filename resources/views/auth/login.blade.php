@@ -1,6 +1,10 @@
 <x-guest-layout>
     <div class="max-w-md mx-auto bg-white ">
-        <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">Masuk ke Akun Anda</h2>
+        <div class="flex flex-col items-center mb-6">
+            <img src="/logo.png" alt="Logo" class="w-24 h-24 mb-2">
+            <h1 class="text-3xl font-bold text-center animate-text-slide-up">SIRUNTIR</h1>
+        </div>
+       
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

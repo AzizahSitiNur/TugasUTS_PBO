@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Sistem Peminjaman Ruangan</a>
+            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">SIRUNTIR</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,12 +20,13 @@
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.users.index') }}">User</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.rooms.index') }}">Ruangan</a>
+                        <a class="nav-link" href="{{ route('admin.rooms.index') }}">Ruang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.bookings.index') }}">Peminjaman</a>
+                        <a class="nav-link" href="{{ route('admin.bookings.index') }}">Daftar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.users.index') }}">User</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
