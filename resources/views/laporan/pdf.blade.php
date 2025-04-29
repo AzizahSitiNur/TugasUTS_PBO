@@ -62,7 +62,7 @@
     <table>
         <thead>
             <tr>
-                <th>#</th>
+                <th>No</th>
                 <th>Ruangan</th>
                 <th>Peminjam</th>
                 <th>Waktu Mulai</th>

@@ -19,11 +19,9 @@
 
     <div class="min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
         
-        <div class="mb-1">
-            <ion-icon name="person-circle-outline" class="text-blue-900 text-8xl"></ion-icon>
-        </div>
 
         <div class="mt-4 w-full max-w-md bg-white border-2 border-blue-900 rounded-lg p-8">
+            
             {{ $slot }}
         </div>
     </div>
