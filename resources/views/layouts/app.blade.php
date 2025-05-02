@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'SIRUNTIR') }}</title>
-        <!-- ganti icon laravel -->
+        <!-- ganti icon -->
         <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
 
