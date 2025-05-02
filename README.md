@@ -13,3 +13,11 @@ Pengguna akan diarahkan ke halaman login saat membuka web
 ![Tampilan Register](public/screenshots/register.png)
 Jika penggguna belum memiliki akun, maka akan diarahkan ke halaman register untuk membuat akun
 
+# Tampilan Dahboard User
+![Tampilan Dashboard User](public/screenshots/dashboard_user.png)
+
+# Tampilan Membuat Peminjaman Ruangan
+![Tampilan Membuat Peminjaman Ruangan](public/screenshots/buat_peminjaman.png)
+
+# Tampilan Daftar Pinjam
+![Tampilan Daftar Pinjam](public/screenshots/peminjaman_user.png)
