@@ -18,6 +18,16 @@ Jika penggguna belum memiliki akun, maka akan diarahkan ke halaman register untu
 
 # Tampilan Membuat Peminjaman Ruangan
 ![Tampilan Membuat Peminjaman Ruangan](public/screenshots/buat_peminjaman.png)
+User bisa membuat peminjaman baru melalui halaman "Buat Peminjaman"
 
 # Tampilan Daftar Pinjam
 ![Tampilan Daftar Pinjam](public/screenshots/peminjaman_user.png)
+Daftar ruangan yang sedang dipinjam oleh user akan ditampilkan di daftar ini
+
+# Kalender
+![Kalender](public/screenshots/kalender_user.png)
+Jadwal peminjaman ruangan akan ditampilkan pada kalender
+
+# Tampilan Kalender
+![Tampilan Kalender](public/screenshots/tampilan_kalender.png)
+

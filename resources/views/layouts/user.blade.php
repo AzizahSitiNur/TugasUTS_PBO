@@ -136,4 +136,8 @@
     @stack('scripts')
 </body>
 
+<footer class="bg-primary text-white text-center py-3">
+     <p>&copy; {{ date('Y') }} SIRUNTIR. BY Kelompok 3.</p>
+</footer>
+
 </html>
