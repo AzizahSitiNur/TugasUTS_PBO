@@ -28,6 +28,31 @@ Daftar ruangan yang sedang dipinjam oleh user akan ditampilkan di daftar ini
 ![Kalender](public/screenshots/kalender_user.png)
 Jadwal peminjaman ruangan akan ditampilkan pada kalender
 
-# Tampilan Kalender
-![Tampilan Kalender](public/screenshots/tampilan_kalender.png)
+# Dashboard Admin
+![Dashboard Admin](public/screenshots/dashboard_admin.png)
+Jika admin melakukan registrasi atau log-in, maka nanti akan langsung diarahkan ke dashboard admin
+
+# Daftar Ruangan
+![Daftar Ruangan](public/screenshots/daftar_ruangan.png)
+Semua ruangan yang ditambahkan oleh admin akan dimunculkan pada halaman ini, admin dapat menghapus maupun meemperbarui spesifikasi ruangan
+
+# Tampilan Tambah Ruangan
+![Tampilan Tambah Ruangan](public/screenshots/tambah_ruangan.png)
+Admin dapat menambah ruangan
+
+# Daftar User
+![Daftar User](public/screenshots/daftar_user.png)
+Admin dapat melihat daftar user yang menggunakan website ini, admin juga dapat menghapus atau memperbarui profil user maupun role user
+
+# Tambah Daftar User
+![Tambah Daftar User](public/screenshots/tambah_user.png)
+User dapat ditambahkan oleh admin secara manual
+
+# Daftar Peminjaman Pada Halaman Admin
+![Daftar Peminjaman Pada Halaman Admin](public/screenshots/daftar_peminjaman.png)
+Peminjaman ruangan yang sudah diajukan oleh user akan terlihat di halaman ini dan admin dapat menyetujui maupun menolak permintaan tersebut
+
+# Laporan Peminjaman
+![Laporan Peminjaman](public/screenshots/laporan_peminjaman.png)
+Admin dapat meng-export laporan peminjaman menjadi format PDF
 
