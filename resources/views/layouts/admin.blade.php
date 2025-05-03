@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') | SIRUNTIR</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .content-wrapper {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -51,7 +64,7 @@
         </div>
     </nav>
 
-    <div class="container my-4">
+    <div class="container my-4 content-wrapper">
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -67,10 +80,28 @@
         @yield('content')
     </div>
 
+    <footer class="bg-dark text-white py-3 mt-auto">
+        <div class="container d-flex justify-content-between align-items-start flex-wrap">
+            <div class="text-start">
+                <p class="mb-1 fw-bold fs-4">SIRUNTIR</p>
+                <p class="mb-0 small">{{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</p>
+            </div>
+    
+            <div class="text-end small">
+                <div class="fw-semibold">MADE BY:</div>
+                <div>Aulia Dwi Fathonah</div>
+                <div>Azizah Siti Nurafiah</div>
+                <div>Cahaya Jiwa Anenda</div>
+                <div>Faturohman</div>
+                <div>Hamzah Permata Putra</div>
+                <div>Rifqi Aditya Saputra</div>
+            </div>
+        </div>
+    </footer>
+    
+    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     @yield('scripts')
 </body>
-<footer class="bg-dark text-white text-center py-3">
-    <p>&copy; {{ date('Y') }} SIRUNTIR. BY Kelompok 3.</p>
-</footer>
 </html>
