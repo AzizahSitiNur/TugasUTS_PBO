@@ -136,8 +136,23 @@
     @stack('scripts')
 </body>
 
-<footer class="bg-primary text-white text-center py-3">
-     <p>&copy; {{ date('Y') }} SIRUNTIR. BY Kelompok 3.</p>
+<footer class="bg-primary text-white py-3 mt-auto">
+    <div class="container d-flex justify-content-between align-items-start flex-wrap">
+        <div class="text-start">
+            <p class="mb-1 fw-bold fs-4">SIRUNTIR</p>
+            <p class="mb-0 small">{{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</p>
+        </div>
+
+        <div class="text-end small">
+            <div class="fw-semibold">MADE BY:</div>
+            <div>Aulia Dwi Fathonah</div>
+            <div>Azizah Siti Nurafiah</div>
+            <div>Cahaya Jiwa Anenda</div>
+            <div>Faturohman</div>
+            <div>Hamzah Permata Putra</div>
+            <div>Rifqi Aditya Saputra</div>
+        </div>
+    </div>
 </footer>
 
 </html>
