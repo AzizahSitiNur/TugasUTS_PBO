@@ -32,7 +32,6 @@
         height: 20px;
         border-radius: 9999px;
         background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
-        width: 70%;
         animation: progressBar 2s ease-out forwards;
     }
 
@@ -41,7 +40,7 @@
             width: 0;
         }
         to {
-            width: 70%;
+            width: {{ $progress }}%;
         }
     }
 </style>
@@ -97,8 +96,9 @@
 <!-- Progress Bar -->
 <div class="progress-container">
     <h3 class="text-white mb-2">Progress Peminjaman Tahun Ini</h3>
+    <p class="text-white mt-1">{{ $totalPeminjaman }} dari {{ $targetPeminjaman }} peminjaman</p>
     <div class="w-100 bg-gray-300 rounded-full">
-        <div class="progress-bar"></div>
+        <div class="progress-bar" style="width: {{ $progress }}%;"></div>
     </div>
 </div>
 
