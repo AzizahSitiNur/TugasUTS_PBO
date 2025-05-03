@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $approvedBookings = Booking::where('status', 'approved')->count();
 
         $totalPeminjaman = Booking::whereYear('created_at', now()->year)->count();
-        $targetPeminjaman = 50; // ganti sesuai target kamu
+        $targetPeminjaman = Booking::where('status', 'approved')->whereYear('created_at', now()->year)->count(); 
         $progress = $targetPeminjaman > 0 ? min(($totalPeminjaman / $targetPeminjaman) * 100, 100) : 0;
 
         return view('admin.dashboard', compact('totalRooms', 'totalUsers', 'pendingBookings', 'approvedBookings', 'totalPeminjaman', 'targetPeminjaman', 'progress'));
